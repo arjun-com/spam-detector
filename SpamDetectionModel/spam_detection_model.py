@@ -62,4 +62,4 @@ class SpamDetectionModel():
         print(classification_report(self.y_test, self.y_pred, digits=4))
 
     def predict(self, text):
-        return self.pipe.predict([text])
+        return self.pipe.predict([text])[0]
