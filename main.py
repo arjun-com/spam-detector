@@ -1,5 +1,6 @@
-from SpamDetectionModel.spam_detection_model import SpamDetectionModel
 import wx
+
+from SpamDetectionModel.spam_detection_model import SpamDetectionModel
 
 
 class SpamDetectorFrame(wx.Frame):
@@ -28,8 +29,7 @@ class SpamDetectorFrame(wx.Frame):
         title.SetFont(title_font)
 
         subtitle = wx.StaticText(
-            panel,
-            label="Paste a message below and check if it looks like spam."
+            panel, label="Paste a message below and check if it looks like spam."
         )
         subtitle.SetForegroundColour(wx.Colour(100, 100, 100))
 
@@ -96,7 +96,7 @@ class SpamDetectorFrame(wx.Frame):
         self.status_bar = self.CreateStatusBar()
         self.status_bar.SetStatusText("Ready to check")
 
-        # ---------- Bind events ----------
+        # --- Bind events ---
         self.check_btn.Bind(wx.EVT_BUTTON, self.on_check)
         self.clear_btn.Bind(wx.EVT_BUTTON, self.on_clear)
         self.sample_btn.Bind(wx.EVT_BUTTON, self.on_sample)
@@ -128,7 +128,9 @@ class SpamDetectorFrame(wx.Frame):
 
         is_spam = prediction == 1
         self.update_result_ui(is_spam)
-        self.status_bar.SetStatusText("Checked: spam" if is_spam else "Checked: not spam")
+        self.status_bar.SetStatusText(
+            "Checked: spam" if is_spam else "Checked: not spam"
+        )
 
     def on_clear(self, event):
         self.text_input.SetValue("")
